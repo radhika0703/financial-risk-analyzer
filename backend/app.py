@@ -74,7 +74,14 @@ def predict():
     loan = float(data['loan'])
     credit_score = int(data['credit_score'])
 
-    input_data = np.array([[income, loan, credit_score]])
+    loan_income_ratio = loan / income
+
+    input_data = np.array([[
+    income,
+    loan,
+    credit_score,
+    loan_income_ratio
+]])
 
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
